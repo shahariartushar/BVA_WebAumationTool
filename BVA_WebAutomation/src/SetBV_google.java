@@ -23,10 +23,14 @@ import java.nio.charset.Charset;
 import java.util.Random;
 import java.awt.event.ActionEvent;
 import javax.swing.JCheckBox;
+import javax.swing.JComponent;
+
 import java.awt.Font;
 
 public class SetBV_google extends JFrame {
 
+	public JFrame frmSetBV_google;
+	
 	private JPanel contentPane;
 	private JTextField fNameLower;
 	private JTextField fNameUpper;
@@ -47,7 +51,7 @@ public class SetBV_google extends JFrame {
 			public void run() {
 				try {
 					SetBV_google frame = new SetBV_google();
-					frame.setVisible(true);
+					frame.frmSetBV_google.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -59,88 +63,86 @@ public class SetBV_google extends JFrame {
 	 * Create the frame.
 	 */
 	public SetBV_google() {
-		setTitle("SET BOUNDARY VALUE(site: Google)");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 490, 289);
-		contentPane = new JPanel();
-		contentPane.setBackground(new Color(192, 192, 192));
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		frmSetBV_google = new JFrame();
+		frmSetBV_google.setTitle("SET BOUNDARY VALUE(site: Google)");
+		frmSetBV_google.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmSetBV_google.setBounds(100, 100, 490, 289);
+		frmSetBV_google.getContentPane().setBackground(new Color(192, 192, 192));
+		frmSetBV_google.getContentPane().setLayout(null);
 		
 		JLabel lblLower = new JLabel("LOWER V.");
 		lblLower.setFont(new Font("Segoe UI Semibold", Font.ITALIC, 10));
 		lblLower.setBounds(241, 13, 56, 16);
-		contentPane.add(lblLower);
+		frmSetBV_google.getContentPane().add(lblLower);
 		
 		JLabel lblUpper = new JLabel("UPPER V.");
 		lblUpper.setFont(new Font("Segoe UI Semibold", Font.ITALIC, 10));
 		lblUpper.setBounds(366, 13, 56, 16);
-		contentPane.add(lblUpper);
+		frmSetBV_google.getContentPane().add(lblUpper);
 		
 		fNameLower = new JTextField();
 		fNameLower.setHorizontalAlignment(SwingConstants.RIGHT);
 		fNameLower.setBounds(205, 42, 116, 22);
-		contentPane.add(fNameLower);
+		frmSetBV_google.getContentPane().add(fNameLower);
 		fNameLower.setColumns(10);
 		
 		fNameUpper = new JTextField();
 		fNameUpper.setHorizontalAlignment(SwingConstants.RIGHT);
 		fNameUpper.setBounds(333, 42, 116, 22);
 		fNameUpper.setColumns(10);
-		contentPane.add(fNameUpper);
+		frmSetBV_google.getContentPane().add(fNameUpper);
 		
 		lNameLower = new JTextField();
 		lNameLower.setHorizontalAlignment(SwingConstants.RIGHT);
 		lNameLower.setBounds(205, 71, 116, 22);
 		lNameLower.setColumns(10);
-		contentPane.add(lNameLower);
+		frmSetBV_google.getContentPane().add(lNameLower);
 		
 		lNameUpper = new JTextField();
 		lNameUpper.setHorizontalAlignment(SwingConstants.RIGHT);
 		lNameUpper.setBounds(333, 71, 116, 22);
 		lNameUpper.setColumns(10);
-		contentPane.add(lNameUpper);
+		frmSetBV_google.getContentPane().add(lNameUpper);
 		
 		uNameLower = new JTextField();
 		uNameLower.setHorizontalAlignment(SwingConstants.RIGHT);
 		uNameLower.setBounds(205, 100, 116, 22);
 		uNameLower.setColumns(10);
-		contentPane.add(uNameLower);
+		frmSetBV_google.getContentPane().add(uNameLower);
 		
 		uNameUpper = new JTextField();
 		uNameUpper.setHorizontalAlignment(SwingConstants.RIGHT);
 		uNameUpper.setBounds(333, 100, 116, 22);
 		uNameUpper.setColumns(10);
-		contentPane.add(uNameUpper);
+		frmSetBV_google.getContentPane().add(uNameUpper);
 		
 		passLower = new JTextField();
 		passLower.setEditable(false);
 		passLower.setHorizontalAlignment(SwingConstants.RIGHT);
 		passLower.setBounds(205, 129, 116, 22);
 		passLower.setColumns(10);
-		contentPane.add(passLower);
+		frmSetBV_google.getContentPane().add(passLower);
 		
 		passUpper = new JTextField();
 		passUpper.setEditable(false);
 		passUpper.setHorizontalAlignment(SwingConstants.RIGHT);
 		passUpper.setBounds(333, 129, 116, 22);
 		passUpper.setColumns(10);
-		contentPane.add(passUpper);
+		frmSetBV_google.getContentPane().add(passUpper);
 		
 		cPassLower = new JTextField();
 		cPassLower.setEditable(false);
 		cPassLower.setHorizontalAlignment(SwingConstants.RIGHT);
 		cPassLower.setBounds(205, 158, 116, 22);
 		cPassLower.setColumns(10);
-		contentPane.add(cPassLower);
+		frmSetBV_google.getContentPane().add(cPassLower);
 		
 		cPassUpper = new JTextField();
 		cPassUpper.setEditable(false);
 		cPassUpper.setHorizontalAlignment(SwingConstants.RIGHT);
 		cPassUpper.setBounds(333, 158, 116, 22);
 		cPassUpper.setColumns(10);
-		contentPane.add(cPassUpper);
+		frmSetBV_google.getContentPane().add(cPassUpper);
 		
 		JButton btnNewButton = new JButton("RUN");
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -178,7 +180,7 @@ public class SetBV_google extends JFrame {
 		});
 		btnNewButton.setForeground(new Color(0, 153, 0));
 		btnNewButton.setBackground(UIManager.getColor("Button.background"));
-		contentPane.add(btnNewButton);
+		frmSetBV_google.getContentPane().add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("BACK");
 		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -186,52 +188,55 @@ public class SetBV_google extends JFrame {
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				//todo: dispose this window
+				//dispose this window and open Home
+				frmSetBV_google.dispose();
 				Home window = new Home();
 				window.frmHome.setVisible(true);
 			}
 		});
 		btnNewButton_1.setForeground(new Color(204, 0, 0));
 		btnNewButton_1.setBackground(UIManager.getColor("Button.background"));
-		contentPane.add(btnNewButton_1);
+		frmSetBV_google.getContentPane().add(btnNewButton_1);
 		
 		JCheckBox cbFName = new JCheckBox("First Name");
 		cbFName.setFont(new Font("Georgia", Font.PLAIN, 11));
 		cbFName.setBackground(new Color(192, 192, 192));
 		cbFName.setSelected(true);
 		cbFName.setBounds(27, 42, 138, 23);
-		contentPane.add(cbFName);
+		frmSetBV_google.getContentPane().add(cbFName);
 		
 		JCheckBox cbLName = new JCheckBox("Last Name");
 		cbLName.setFont(new Font("Georgia", Font.PLAIN, 11));
 		cbLName.setBackground(new Color(192, 192, 192));
 		cbLName.setSelected(true);
 		cbLName.setBounds(27, 71, 138, 23);
-		contentPane.add(cbLName);
+		frmSetBV_google.getContentPane().add(cbLName);
 		
 		JCheckBox cbUName = new JCheckBox("Username");
 		cbUName.setFont(new Font("Georgia", Font.PLAIN, 11));
 		cbUName.setBackground(new Color(192, 192, 192));
 		cbUName.setSelected(true);
 		cbUName.setBounds(27, 102, 138, 23);
-		contentPane.add(cbUName);
+		frmSetBV_google.getContentPane().add(cbUName);
 		
 		JCheckBox cbPass = new JCheckBox("Password");
 		cbPass.setFont(new Font("Georgia", Font.PLAIN, 11));
 		cbPass.setBackground(new Color(192, 192, 192));
 		cbPass.setBounds(27, 131, 138, 23);
-		contentPane.add(cbPass);
+		frmSetBV_google.getContentPane().add(cbPass);
 		
 		JCheckBox cbCPass = new JCheckBox("Confirm Password");
 		cbCPass.setFont(new Font("Georgia", Font.PLAIN, 11));
 		cbCPass.setBackground(new Color(192, 192, 192));
 		cbCPass.setBounds(27, 158, 138, 23);
-		contentPane.add(cbCPass);
+		frmSetBV_google.getContentPane().add(cbCPass);
 	}
 	
 	//BVA of username
 	private void usernameTestExecution(WebDriver driver) throws InterruptedException 
 	{
+		driver.navigate().refresh();
+		
 		//todo:
 		//1. run BVA in loop
 		//2. write in file

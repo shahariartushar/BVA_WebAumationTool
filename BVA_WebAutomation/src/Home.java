@@ -79,7 +79,7 @@ public class Home {
 				//todo: select correct site for SetBV
 				frmHome.dispose();
 				SetBV_google google = new SetBV_google();
-				google.setVisible(true);
+				google.frmSetBV_google.setVisible(true);
 			}
 		});
 		btnNewButton.setBounds(345, 41, 97, 25);
