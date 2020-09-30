@@ -1,13 +1,9 @@
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -19,19 +15,16 @@ import javax.swing.JButton;
 import java.awt.Color;
 import javax.swing.UIManager;
 import java.awt.event.ActionListener;
-import java.nio.charset.Charset;
 import java.util.Random;
 import java.awt.event.ActionEvent;
 import javax.swing.JCheckBox;
-import javax.swing.JComponent;
 
 import java.awt.Font;
 
-public class SetBV_google extends JFrame {
+public class SetBV_google{
 
 	public JFrame frmSetBV_google;
 	
-	private JPanel contentPane;
 	private JTextField fNameLower;
 	private JTextField fNameUpper;
 	private JTextField lNameLower;
@@ -238,8 +231,7 @@ public class SetBV_google extends JFrame {
 		driver.navigate().refresh();
 		
 		//todo:
-		//1. run BVA in loop
-		//2. write in file
+		//1. write in file
 
 		int limitArray[] = getLimitArray(getUNameLower(),getUNameUpper());
 		String[] testCase = getTestCase(limitArray);
@@ -262,10 +254,6 @@ public class SetBV_google extends JFrame {
 			{
 				WebElement error = driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div[1]/div[2]/form/div[2]/div/div[1]/div[2]/div[1]/div/div[2]/div[2]/div"));
 			
-				//todo:
-				//1.extract error message and find the correct one
-				//System.out.println(error.getText());
-			
 				if(error.getText().contains("Sorry"))
 				{
 					resultFinder = false;
@@ -274,7 +262,7 @@ public class SetBV_google extends JFrame {
 			}
 			catch(Exception e) 
 			{
-				  //  Block of code to handle errors
+				System.out.println("Exception occurred");
 			}
 			
 			if(resultFinder == false)
@@ -288,12 +276,8 @@ public class SetBV_google extends JFrame {
 			
 			driver.navigate().refresh();
 		}
-		
-		
-		//driver.navigate().refresh();
 	}
 	
-	@SuppressWarnings("null")
 	public String[] getTestCase(int [] limitArray) 
 	{
 		String[] testCase = new String[limitArray.length];
