@@ -152,13 +152,16 @@ public class SetBV_google extends JFrame {
 				//1. handle check-box
 				//2. text-box null check
 				
+				
 				System.setProperty("webdriver.chrome.driver", ".\\lib\\chrome driver\\chromedriver.exe");
 				WebDriver driver = new ChromeDriver();
 				driver.get("https://accounts.google.com/signup/v2/webcreateaccount?continue=https%3A%2F%2Fmyaccount.google.com%3Futm_source%3Daccount-marketing-page%26utm_medium%3Dcreate-account-button&flowName=GlifWebSignIn&flowEntry=SignUp&hl=en");
 				driver.manage().window().maximize();
 				
+				
 				//todo:
 				//1. add more fields and send them in a function
+				
 				
 				try 
 				{
@@ -232,44 +235,70 @@ public class SetBV_google extends JFrame {
 		//todo:
 		//1. run BVA in loop
 		//2. write in file
-		
+
 		int limitArray[] = getLimitArray(getUNameLower(),getUNameUpper());
+		String[] testCase = getTestCase(limitArray);
+		boolean resultFinder = true;
 		
 		for(int i=0; i<limitArray.length; i++)
-		{
-			System.out.println(getRandomString(limitArray[i]));
-		}	
-			String text = getRandomString(5);
-			Thread.sleep(1000);
+		{	
+			resultFinder = true;
 			
+			Thread.sleep(2000);
 			WebElement username = driver.findElement(By.name("Username"));
-			username.sendKeys(text);
+			username.sendKeys(testCase[i]);
 			
-			Thread.sleep(1000);
-			
+			Thread.sleep(2000);
 			WebElement password = driver.findElement(By.name("Passwd"));
 			password.click();
 		
-			Thread.sleep(1000);
-		
-			WebElement error = driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div[1]/div[2]/form/div[2]/div/div[1]/div[2]/div[1]/div/div[2]/div[2]/div"));
+			Thread.sleep(2000);
+			try 
+			{
+				WebElement error = driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div[1]/div[2]/form/div[2]/div/div[1]/div[2]/div[1]/div/div[2]/div[2]/div"));
 			
-			//todo:
-			//1.extract error message and find the correct one
-			System.out.println(error.getText());
-			if(error.getText() != null)
-			{
-				System.out.println("Error Found!!");
+				//todo:
+				//1.extract error message and find the correct one
+				//System.out.println(error.getText());
+			
+				if(error.getText().contains("Sorry"))
+				{
+					resultFinder = false;
+				}
+
 			}
-			else
+			catch(Exception e) 
 			{
-				System.out.println("Accepted.");
+				  //  Block of code to handle errors
 			}
-			//driver.navigate().refresh();
-		//}
+			
+			if(resultFinder == false)
+			{
+				System.out.println("Error Found!");
+			}
+			else if(resultFinder == true)
+			{
+				System.out.println("Successful.");
+			}
+			
+			driver.navigate().refresh();
+		}
 		
 		
 		//driver.navigate().refresh();
+	}
+	
+	@SuppressWarnings("null")
+	public String[] getTestCase(int [] limitArray) 
+	{
+		String[] testCase = new String[limitArray.length];
+		
+		for(int i=0; i<limitArray.length; i++)
+		{
+			testCase[i] = getRandomString(limitArray[i]);
+		}
+	 
+	    return testCase;
 	}
 	
 	public String getRandomString(int length) 
@@ -292,52 +321,54 @@ public class SetBV_google extends JFrame {
 	
 	public int getFNameLower()
 	{
-		return Integer.parseInt(fNameLower.getText());
+		return Integer.parseInt(fNameLower.getText().trim());
 	}
 	
 	public int getFNameUpper()
 	{
-		return Integer.parseInt(fNameUpper.getText());
+		return Integer.parseInt(fNameUpper.getText().trim());
 	}
 	
 	public int getLNameLower()
 	{
-		return Integer.parseInt(lNameLower.getText());
+		return Integer.parseInt(lNameLower.getText().trim());
 	}
 	
 	public int getLNameUpper()
 	{
-		return Integer.parseInt(lNameUpper.getText());
+		return Integer.parseInt(lNameUpper.getText().trim());
 	}
 	
 	public int getUNameLower()
 	{
-		return Integer.parseInt(uNameLower.getText());
+		//System.out.println(uNameLower.getText().trim());
+		return Integer.parseInt(uNameLower.getText().trim());
 	}
 	
 	public int getUNameUpper()
 	{
-		return Integer.parseInt(uNameUpper.getText());
+		//System.out.println(uNameUpper.getText().trim());
+		return Integer.parseInt(uNameUpper.getText().trim());
 	}
 	
 	public int getPassLower()
 	{
-		return Integer.parseInt(passLower.getText());
+		return Integer.parseInt(passLower.getText().trim());
 	}
 	
 	public int getPassUpper()
 	{
-		return Integer.parseInt(passUpper.getText());
+		return Integer.parseInt(passUpper.getText().trim());
 	}
 	
 	public int getCPassLower()
 	{
-		return Integer.parseInt(cPassLower.getText());
+		return Integer.parseInt(cPassLower.getText().trim());
 	}
 	
 	public int getCPassUpper()
 	{
-		return Integer.parseInt(cPassUpper.getText());
+		return Integer.parseInt(cPassUpper.getText().trim());
 	}
 
 }
